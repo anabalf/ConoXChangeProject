@@ -1,0 +1,18 @@
+<h1 class="mb-3">Login</h1>
+
+<form method="POST" action="/login">
+  <div class="form-group">
+    <label>Email address</label>
+    <input name="email" type="email" value="{{user.email}}" class="form-control" placeholder="Enter email">
+  </div>
+
+
+  <div class="form-group">
+    <label>Password</label>
+    <input name="password" type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" placeholder="Password">
+    {{#if errors.password}}<small class="invalid-feedback">{{errors.password}}</small>{{/if}}
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-2">Login</button>
+
+</form>

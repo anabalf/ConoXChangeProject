@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <h2 class="navbar-brand">conXchange</h2>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+        {{#unless currentUser}}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/register">Register</a>
+          </li>  
+          <li class="nav-item"> 
+            <a class="nav-link active" aria-current="page" href="/login">Login</a>
+          </li>
+        {{/unless}}
+        
+        {{#if currentUser}}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/search">Search Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item"></li>
+            <a class="nav-link active" aria-current="page" href="/logout">Log out</a>
+          </li>
+        {{/if }}
+        
+      </ul>
+    </div>
+
+  </div>
+  
+</nav>

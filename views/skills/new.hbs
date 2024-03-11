@@ -1,0 +1,35 @@
+<h1>Skills</h1>
+<form action="/skills/new" method="post">
+   
+   <div class="mb-3">
+    <label class="form-label">Category</label>
+    <select name="category" class="form-select {{#if errors.category}}is-invalid{{/if}}">
+      <option selected> Select a category</option>
+      <option>Crafts</option>
+      <option>Cooking</option>
+      <option>Gardening and Horticulture</option>
+      <option>Everyday Life skills</option>
+      <option>Music</option>
+      <option>Sports</option>
+      <option>Technology</option>
+      <option>Languages and Culture</option>
+      <option>Others</option>
+    </select>
+    {{#if errors.category}}<small class="invalid-feedback">{{errors.category}}</small>{{/if}}
+  </div>
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" name="name">
+    {{#if errors.name}}<small class="invalid-feedback">{{errors.name}}</small>{{/if}}
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label {{#if errors.description}}is-invalid{{/if}}">Description</label>
+    <textarea class="form-control" rows="3" name="description" placeholder="Write a brief description about your skill"></textarea>
+    {{#if errors.description}}<small class="invalid-feedback">{{errors.description}}</small>{{/if}}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create</button>
+
+</form>

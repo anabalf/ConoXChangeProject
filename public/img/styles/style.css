@@ -1,0 +1,42 @@
+
+#img-card{
+    width: 30px;
+    height: 30px;
+    padding-top: 3px;
+}
+.form{
+    position: relative;
+   margin: 20px;
+}
+.form .fa-search{
+    position: absolute;
+    top: 16px;
+    left: 10px;
+    color: #7b7d81;
+    border-radius: 1px;
+    border: transparent;
+}
+
+.form span{
+    position: absolute;
+    right: 19px;
+    top: 16px;
+    padding: 3px;
+    border-left: 1px solid #D1D5DB;
+}
+.left-pan{
+    padding-left: 7px;
+}
+.left-pan i{
+   padding-left: 10px;
+}
+.form-input{
+    width: 180px;
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px;
+}
+.form-input:focus{
+    box-shadow: none;
+    border:none;
+}
