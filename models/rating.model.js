@@ -8,16 +8,16 @@ const ratingSchema = new mongoose.Schema(
             ref: 'User',
             required: true
         },
-        target: {
+        skill: {
             type: mongoose.Types.ObjectId,
-            ref: 'User', //confirmar en clase!!
+            ref: 'Skill', 
             required: true
         },
-        value: {
+        rate: {
             type: Number,
             min: 1,
             max: 5,
-            required: true,
+            required: [true, "Rate is required"]
         },
         comment: {
             type: String
@@ -29,3 +29,4 @@ const ratingSchema = new mongoose.Schema(
 
 const Rating = mongoose.model('Rating', ratingSchema);
 module.exports = Rating;
+

@@ -13,7 +13,7 @@ module.exports.doCreate = (req, res, next) => {
             if(userFound) {
                 res.status(409).render("users/register", { userFound, errors: { email: 'Already exists' } });
             } else {
-                const user = { email: req.body.email, username: req.body.username, password: req.body.password};
+                const user = { email: req.body.email, username: req.body.username, password: req.body.password, interests: req.body.interests};
                 return User.create(user)
                 .then(() => res.redirect("/login"))
             }
@@ -40,7 +40,8 @@ module.exports.doLogin = (req, res, next) => {
                     .then((match) => {
                         if(match) {
                             req.session.userId = user.id;
-                            res.redirect('/profile');
+                            console.debug(`esto es ${user}`)
+                            res.redirect(`/profile/${user.id}`);
                         } else {
                             res.status(401).render('users/login', { user: req.body, errors: { password: 'Invalid email or password' } })
                         }
@@ -57,10 +58,6 @@ module.exports.logout = (req, res, next) => {
     res.redirect('/login');
 }
 
-//module.exports.profile = (req, res, next) => {
-   // res.render("users/profile");
-//}
-
 module.exports.edit = (req, res, next) => {
     res.render("users/edit")
 }
@@ -74,7 +71,7 @@ module.exports.doEdit = (req, res, next) => {
             if(!user) {
                 return res.status(400).send("User not found")
             } else {
-                res.redirect('/profile');
+                res.redirect(`/profile/${user.id}`);
             }
         }).catch((error) => {
             if (error instanceof mongoose.Error.ValidationError) {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const skillSchema = new Schema(
+const petitionSchema = new Schema(
     {
         name: {
             type: String,
@@ -17,27 +17,12 @@ const skillSchema = new Schema(
             type: String,
             required: [true, "Description is required"]
         },
-        owner: {
+        requester: {
             type: mongoose.Types.ObjectId,
             ref: 'User',
             required: true
-        },
-        averageRating: {
-            type: Number,
-            default: 0
         }
     },
 
     { timestamps: true }
-);
-
-skillSchema.virtual('ratings', {
-    ref: 'Rating',
-    localField: '_id',
-    foreignField: 'skill',
-    justOne: false
-  })
-  
-
-const Skill = mongoose.model('Skill', skillSchema);
-module.exports = Skill;
+)

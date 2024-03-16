@@ -22,6 +22,13 @@ const userSchema = new Schema({
         maxLength: [10, "Username needs should have less than 10 characters"],
         minLength: [3, "Username needs at least 3 characters"],
     },
+    description: {
+        type: String
+    },
+    interests: {
+        type: [String],
+        enum: ['Crafts', 'Cooking', 'Gardening and Horticulture', 'Everyday Life Skills', 'Music', 'Sports', 'Technology', 'Languages and Culture','Others']
+    }
 },
 { timestamps: true }
 );

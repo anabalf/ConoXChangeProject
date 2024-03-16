@@ -1,16 +1,26 @@
 <h1>User Profile</h1>
 
 <div class="card" style="width: 18rem;">
-  <img src="https://i.pravatar.cc/150?u=iron-fake@pravatar.com" class="card-img-top" alt="...">
+  <img src="https://i.pravatar.cc/150?u={{user.email}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">{{currentUser.username}}</h5>
-    <p class="card-text">{{currentUser.description}}</p>
+    <h5 class="card-title">Name: {{user.username}}</h5>
+    {{#if isUserLogged}} <p class="card-text">Email: {{user.email}}</p> {{/if}}
+    
+    <h5 class="card-text">Description: {{user.description}}</h5>
+    
+    <h5>My interests:</h5>
+    <p>
+      {{#each user.interests as |interest|}}
+        <ul><li>{{interest}} <img src="{{categoryImage interest}}" style="height: 43px; width: 36px" alt=""></li></ul>
+      {{/each}}
+    </p>
+
   </div>
 </div>
 
-<a class="btn btn-primary mt-2" href="/skills/new">New skill</a>
+{{#if isUserLogged}}<a class="btn btn-primary mt-2" href="/skills/new">New skill</a> {{/if}}
 <br>
-<a class="btn btn-primary mt-2" href="/edit">Edit profile</a>
+{{#if isUserLogged}} <a class="btn btn-primary mt-2" href="/edit">Edit profile</a> {{/if}}
 
 <div>
   <h2>Skills</h2>
@@ -18,6 +28,5 @@
     {{#each skills as |skill|}}
         <a href="/detail/{{skill.id}}" class="list-group-item list-group-item-action">{{skill.name}}</a>
     {{/each}}
-
   </div>
 </div>
