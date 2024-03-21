@@ -4,6 +4,7 @@ const users = require('../controllers/users.controller');
 const skills = require('../controllers/skills.controller');
 const messages = require('../controllers/messages.controller');
 const ratings = require('../controllers/ratings.controller');
+const petitions = require('../controllers/petition.controller');
 const secure = require('../middlewares/auth.middleware');
 
 const router =  express.Router();
@@ -45,6 +46,10 @@ router.post('/messages/:id', secure.isAuthenticated, messages.doCreate);
 
 //Skills rating
 router.post('/detail/:id', secure.isAuthenticated, ratings.doCreate);
+
+router.get("/petitions/show", secure.isAuthenticated, petitions.show)
+router.post("/petitions/show", secure.isAuthenticated, petitions.doCreate)
+router.get("/petitions/show/:id/delete",secure.isAuthenticated, petitions.delete)
 
 
 module.exports = router;

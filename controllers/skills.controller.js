@@ -23,7 +23,7 @@ module.exports.doCreate = (req, res, next) => {
 };
 
 module.exports.list = (req, res, next) => {
-    const criterial = {}
+    const criterial = {};
 
     if (req.params.userId) {
         if (req.params.userId === 'me') {

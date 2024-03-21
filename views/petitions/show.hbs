@@ -1,0 +1,71 @@
+<div class="container fluid d-flex">
+  
+  <div class="row">
+
+    <div class="col-md-6">
+        <div class="card form-group" style="padding: 20px;">
+            <h1 class="mb-4">New Petition</h1>
+            <form method="POST" action="/petitions/show">
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" value="{{currentUser.username}}" name="requester" class="form-control" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">What you need</label>
+                    <input type="text" value="" name="name" class="form-control {{#if errors.description}}is-invalid{{/if}}" placeholder="Right what you need">
+                    {{#if errors.name}}<small class="invalid-feedback">{{errors.name}}</small>{{/if}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" rows="3" name="description" placeholder="write a brief description about your skill"></textarea>
+                    {{#if errors.description}}<div class="invalid-feedback">{{errors.description}}</div>{{/if}}
+                </div>
+
+                <h3>Category</h3>
+                    {{>icons}}
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-warning btn-lg mt-2 me-2"><i class="fas fa-plus-circle me-1"></i>Create Petition</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card" style="padding: 20px;">
+            <h1>List of petitions</h1>
+                
+                <ul class="list-group list-group-light">
+                {{#each petitions as |petition|}}
+                
+                    <li class="list-group-item d-flex justify-content-between px-3 border-0 list-group-item-warning mb-2">
+                            <div class="d-flex align-items-center">
+                            <img src="https://i.pravatar.cc/150?u={{petition.requester.email}}" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">{{petition.description}}</p>
+                                    <p class="text-muted mb-0">{{petition.requester.username}} </p>
+                                    <small>{{dateFormat date=petition.createdAt}}</small>
+                                </div>
+                            </div>
+                    
+                    <div class="d-inline-block align-middle">
+                        {{#ifRequesterIsLogged petition.requester.username ../username}}
+                            <a class="btn btn-sm btn-danger mx-1 text-decoration-none" href="/petitions/show/{{petition.id}}/delete">Delete</a>
+                            {{else}}
+                            <a class="btn btn-link m-0 text-reset text-decoration-none" href="mailto:{{currentUser.email}}?Subject=Request%20petition%20">Send a message<i class="fas fa-envelope ms-2"></i></a>
+                        {{/ifRequesterIsLogged}}
+                    </div>
+
+                    </li>
+                
+                {{/each}}
+
+                </ul>
+            
+        </div>
+    </div>
+
+  </div>
+
+</div>

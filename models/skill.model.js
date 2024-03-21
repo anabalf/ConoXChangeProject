@@ -22,7 +22,7 @@ const skillSchema = new Schema(
             ref: 'User',
             required: true
         },
-        averageRating: {
+        averageRate: {
             type: Number,
             default: 0
         }

@@ -31,9 +31,7 @@ module.exports.doCreate = (req, res, next) => {
                   }
                 ])
                 .then((result) => {
-                  console.info(result);
-
-                  skill.averageRating = result[0].averageRate;
+                  skill.averageRate = result[0].averageRate;
                   return skill.save()
                     .then( () => res.redirect(`/detail/${skillId}`) )
                   

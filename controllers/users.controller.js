@@ -40,7 +40,6 @@ module.exports.doLogin = (req, res, next) => {
                     .then((match) => {
                         if(match) {
                             req.session.userId = user.id;
-                            console.debug(`esto es ${user}`)
                             res.redirect(`/profile/${user.id}`);
                         } else {
                             res.status(401).render('users/login', { user: req.body, errors: { password: 'Invalid email or password' } })

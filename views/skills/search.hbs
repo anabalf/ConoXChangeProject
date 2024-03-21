@@ -1,21 +1,21 @@
-<h1>Search skills</h1>
+<h1>Search room</h1>
 
 <form action="/search" method="get">
 <div class="container-fluid">
     <div class="row ">
-        <div class="col-md-10 mx-auto text-center">
+        <div class="col-md-6 mx-auto text-center">
             <div class="form">
                 <select class="form-select" name="category">
                     <option value="all">All Categories</option>
-                    <option value="Crafts" {{#ifEq query.priority 'Crafts'}}selected{{/ifEq}}>Crafts</option>
-                    <option value="Cooking" {{#ifEq query.priority 'Cooking'}}selected{{/ifEq}}>Cooking</option>
-                    <option value="Gardening and Horticulture" {{#ifEq query.priority 'Gardening and Horticulture'}}selected{{/ifEq}}>Gardening and Horticulture</option>
-                    <option value="Everyday Life Skills" {{#ifEq query.priority 'Everyday Life Skills'}}selected{{/ifEq}}>Everyday Life Skills</option>
-                    <option value="Music" {{#ifEq query.priority 'Music'}}selected{{/ifEq}}>Music</option>
-                    <option value="Sports" {{#ifEq query.priority 'Sports'}}selected{{/ifEq}}>Sports</option>
-                    <option value="Technology" {{#ifEq query.priority 'Technology'}}selected{{/ifEq}}>Technology</option>
-                    <option value="Languages and Culture" {{#ifEq query.priority 'Languages and Culture'}}selected{{/ifEq}}>Languages and Culture</option>
-                    <option value="Others" {{#ifEq query.priority 'Others'}}selected{{/ifEq}}>Others</option>
+                    <option value="Crafts" {{#ifEq query.category 'Crafts'}}selected{{/ifEq}}>Crafts</option>
+                    <option value="Cooking" {{#ifEq query.category 'Cooking'}}selected{{/ifEq}}>Cooking</option>
+                    <option value="Gardening and Horticulture" {{#ifEq query.category 'Gardening and Horticulture'}}selected{{/ifEq}}>Gardening and Horticulture</option>
+                    <option value="Everyday Life Skills" {{#ifEq query.category 'Everyday Life Skills'}}selected{{/ifEq}}>Everyday Life Skills</option>
+                    <option value="Music" {{#ifEq query.category 'Music'}}selected{{/ifEq}}>Music</option>
+                    <option value="Sports" {{#ifEq query.category 'Sports'}}selected{{/ifEq}}>Sports</option>
+                    <option value="Technology" {{#ifEq query.category 'Technology'}}selected{{/ifEq}}>Technology</option>
+                    <option value="Languages and Culture" {{#ifEq query.category 'Languages and Culture'}}selected{{/ifEq}}>Languages and Culture</option>
+                    <option value="Others" {{#ifEq query.category 'Others'}}selected{{/ifEq}}>Others</option>
                 </select>
                 <input type="text" name="name" class="form-control form-input {{#if errors}}is-invalid{{/if}}" placeholder="Search anything..." value="{{query.title}}">
                 <button class="btn btn-outline-secondary " type="submit"><i class="fa fa-search"></i></button>
@@ -33,7 +33,14 @@
                 <a style=" color:white ; text-decoration: none" href="/profile/{{skill.owner.id}}">
                 <div class="card-header d-inline">
                     <img id="img-card" src="https://i.pravatar.cc/150?u=iron-fake@pravatar.com" alt="Icon" class="rounded-circle d-inline">
-                    {{skill.owner.username}}
+                    <p>{{skill.owner.username}}</p>
+                    <div class="rate" data-rate="{{skill.averageRate}}">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
                 </div>
                 </a>
 
@@ -69,7 +76,14 @@
         <a style=" color:white ; text-decoration: none" href="/profile/{{skill.owner.id}}">
         <div class="card-header d-inline">
             <img id="img-card" src="https://i.pravatar.cc/150?u=iron-fake@pravatar.com" alt="Icon" class="rounded-circle d-inline">
-            {{skill.owner.username}}
+            <p>{{skill.owner.username}}</p>
+            <div class="rate" data-rate="{{skill.averageRate}}">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+             </div>
         </div>
         </a>
 

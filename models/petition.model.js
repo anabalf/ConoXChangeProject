@@ -5,7 +5,7 @@ const petitionSchema = new Schema(
     {
         name: {
             type: String,
-            required: [true, "Name of the skill is required"],
+            required: [true, "Name of the petition is required"],
             maxLength: [50, "Name should have less than 50 characters"]
         },
         category: {
@@ -26,3 +26,6 @@ const petitionSchema = new Schema(
 
     { timestamps: true }
 )
+
+const Petition = mongoose.model('Petition', petitionSchema);
+module.exports = Petition
