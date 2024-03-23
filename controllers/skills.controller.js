@@ -82,7 +82,7 @@ module.exports.doEdit = (req, res, next) => {
             if(!skill) {
                 next (createError(400,"Skill not found"));
             } else {
-                res.redirect(`/profile/${req.session.userId}`) ///MARCOS
+                res.redirect(`/profile/${req.session.userId}`)
             }
         })
         .catch((error) => {
