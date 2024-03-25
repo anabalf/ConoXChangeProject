@@ -56,7 +56,7 @@ module.exports.detail = (req, res, next) => {
             path: 'ratings',
             populate: {
                 path: 'sender',
-                select: 'username'
+                select: 'username email'
             }
         })      
         .then((skill) => { 
@@ -119,7 +119,7 @@ module.exports.show = (req, res, next) => {
 
     Promise.all([
         Skill.find(criterial).populate('owner'),
-        Skill.find({category: { $in:req.user.interests } }).populate("owner").sort({_id: -1 }).limit(2)
+        Skill.find({category: { $in:req.user.interests } }).populate("owner").sort({_id: -1 }).limit(5)
         ])
         .then(([skillsByFinder,skillsByInterests]) => {
             res.render("skills/search",{skillsByFinder,skillsByInterests})
