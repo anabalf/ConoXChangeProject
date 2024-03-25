@@ -19,7 +19,7 @@ const userSchema = new Schema({
         type: String,
         required: [true, "Username is required"],
         unique: true,
-        maxLength: [10, "Username needs should have less than 10 characters"],
+        maxLength: [10, "Username should have less than 10 characters"],
         minLength: [3, "Username needs at least 3 characters"],
     },
     description: {

@@ -9,5 +9,12 @@
             <input name="content" type="text" />
             <button type="submit">send</button>
     </form>
+
+      {{#each messages as |message|}}
+        <ul>
+          <li> Message from {{message.sender.username}}:{{message.content}} </li>
+          <small>{{message.createdAt}}</small>
+        </ul>
+      {{/each}}
     
 </div>

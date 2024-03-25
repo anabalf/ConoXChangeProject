@@ -1,3 +1,4 @@
+const createError = require('http-errors');
 const Petition = require('../models/petition.model');
 const User = require('../models/user.model');
 const mongoose = require('mongoose');
@@ -23,7 +24,13 @@ module.exports.doCreate = (req, res, next) => {
    
    Petition.create(petition)
     .then((petitionCreated) => res.redirect("/petitions/show"))
-    .catch((error) => next (error))
+    .catch((error) => {
+        if(error instanceof mongoose.Error.ValidationError) {
+            return res.render("petitions/show", { errors: error.errors, currentUser: req.user });
+        } else {
+            next (error);
+        }
+    });
 }
 
 
