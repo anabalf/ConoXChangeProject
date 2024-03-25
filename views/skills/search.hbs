@@ -71,8 +71,9 @@
   {{#each skillsByFinder as |skill|}}
   <div class="card-search col-12  col-sm-4 col-md-4 col-lg-2 col-xl-2 m-3">
     <div class="top-container">
-      <a class="img-card" href="/profile/{{skill.owner.id}}"><img
-          src="https://i.pravatar.cc/150?u={{skill.owner.email}}" class="img-fluid profile-image" width="70"></a>
+      <a class="img-card" href="/profile/{{skill.owner.id}}">
+        <img src="https://i.pravatar.cc/150?u={{skill.owner.email}}" class="img-fluid profile-image" width="70">
+      </a>
       <div class="rate" style="max-width: 15rem;" data-rate="{{skill.averageRate}}">
         <span class="star">&#9733;</span>
         <span class="star">&#9733;</span>
